@@ -5,14 +5,14 @@
 import re
 from bs4 import BeautifulSoup
 import requests
-from fake_useragent import UserAgent
+from my_fake_useragent import UserAgent
 
 # 爬虫类
 class spider:
     # 初始化
     def __init__(self):
         self.headers={
-            "User-Agent": UserAgent().random
+            "User-Agent": UserAgent().random()
         }
         self.data_list = []
 
@@ -23,7 +23,7 @@ class spider:
         :return: 当前页数网站的响应状态
         """
         self.headers['Referer'] = 'https://nb.lianjia.com/'
-        self.headers['User-Agent'] = UserAgent().random
+        self.headers['User-Agent'] = UserAgent().random()
         url = f'https://nb.lianjia.com/zufang/cixishi/pg{page}rp2/#contentList'
         response = requests.get(url, headers=self.headers)
         return response
@@ -82,13 +82,15 @@ class spider:
 
 #
 # #
-# crawler = spider()
-# max_page = crawler.get_max_page()
-# for page in range(1,max_page+1):
-#     crawler.run(page)
-# for d in crawler.data_list:
-#     print(d)
-# print(len(crawler.data_list))
+
+if __name__ == "__main__":
+    crawler = spider()
+    max_page = crawler.get_max_page()
+    for page in range(1,max_page+1):
+        crawler.run(page)
+    for d in crawler.data_list:
+        print(d)
+    print(len(crawler.data_list))
 
 
 

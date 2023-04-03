@@ -3,6 +3,8 @@ from concurrent.futures import ThreadPoolExecutor
 import datetime
 import gen_excel
 from message import *
+
+
 """
 {'title': '整租·剑兰苑1室1厅南', 
 'url': '/zufang/NB1621831088567484416.html', 
@@ -130,11 +132,12 @@ for index, d in enumerate(lianjia.data_list):
             }
         }
         # 对对应的接口展示模板
-        todo 修改为自己的webhook地址
-        url = ""  # 机器人的webhook地址
+        # TODO 修改机器人的webhook地址 key 值
+        url = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key= TODO 修改机器人的webhook地址 key 值"  # 机器人的webhook地址
         headers = {'Content-type': 'application/json'}
         result = requests.post(url, headers=headers, json=data)
         print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') , "文本发送情况提示", result.text)
 
-todo 修改为自己的KEY
-sendfile(path=f'./data/{filename}.xlsx',key='')
+#  TODO 修改机器人的webhook地址 key 值
+# https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=7cbc0433-1633-4e4f-8870-2a92972a38ac
+sendfile(path=f'./data/{filename}.xlsx',key=' TODO 修改机器人的webhook地址 key 值')
